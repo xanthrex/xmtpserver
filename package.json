@@ -1,0 +1,12 @@
+{
+  "name": "xmtpserver",
+  "version": "1.0.0",
+  "description": "Redis listener and sender for XMTP messages",
+  "main": "ethereum-listener.js",
+  "scripts": {
+    "start": "node xmtp-listener.js"
+  },
+  "dependencies": {
+    "redis": "^4.6.12"
+  }
+}
