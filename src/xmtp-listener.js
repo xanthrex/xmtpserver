@@ -1,4 +1,5 @@
 const redis = require('redis');
+const { sendXMTPMessage, createXMTPService } = require('./xmtp-service');
 
 const REDIS_CONFIG = {
     url: 'redis://localhost:6379'
@@ -50,7 +51,7 @@ class EthereumRedisListener {
         }
     }
 
-    handleMessage(message, channel) {
+    async handleMessage(message, channel) {
         const receivedAt = new Date().toISOString();
         
         console.log('📨 ==================== ETHEREUM MESSAGE ====================');
@@ -61,6 +62,8 @@ class EthereumRedisListener {
         try {
             const ethereumMessage = JSON.parse(message);
             console.log('🔍 PARSED MESSAGE:', JSON.stringify(ethereumMessage, null, 2));
+
+            await sendXMTPMessage(ethereumMessage.ethereumAddress, ethereumMessage.message);
             
         } catch (parseError) {
             console.error('❌ JSON parsing error:', parseError.message);

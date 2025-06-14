@@ -4,9 +4,13 @@
   "description": "Redis listener and sender for XMTP messages",
   "main": "ethereum-listener.js",
   "scripts": {
-    "start": "node xmtp-listener.js"
+    "start": "node ./src/xmtp-listener.js"
   },
   "dependencies": {
-    "redis": "^4.6.12"
+    "@xmtp/node-sdk": "^2.1.0",
+    "dotenv": "^16.5.0",
+    "redis": "^4.6.12",
+    "uint8arrays": "^4.0.10",
+    "viem": "^2.31.2"
   }
 }
